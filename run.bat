@@ -1,0 +1,1 @@
+java -cp runelite-client/target/client-1.12.4-SNAPSHOT-shaded.jar net.runelite.client.RuneLite

@@ -397,7 +397,7 @@ public class Hooks implements Callbacks
 		notifier.processFlash(graphics2d);
 
 		// Draw clientUI overlays
-		clientUi.paintOverlays(graphics2d);
+		// DAN - clientUi.paintOverlays(graphics2d);
 
 		if (client.isGpu())
 		{

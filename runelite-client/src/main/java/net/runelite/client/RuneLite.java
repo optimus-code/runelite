@@ -328,15 +328,15 @@ public class RuneLite
 
 		// Load the plugins, but does not start them yet.
 		// This will initialize configuration
-		pluginManager.loadCorePlugins();
-		pluginManager.loadSideLoadPlugins();
-		externalPluginManager.loadExternalPlugins();
+		// DAN - pluginManager.loadCorePlugins();
+		// DAN - pluginManager.loadSideLoadPlugins();
+		// DAN - externalPluginManager.loadExternalPlugins();
 
 		SplashScreen.stage(.70, null, "Finalizing configuration");
 
 		// Plugins have provided their config, so set default config
 		// to main settings
-		pluginManager.loadDefaultPluginConfiguration(null);
+		// DAN - pluginManager.loadDefaultPluginConfiguration(null);
 
 		// Start client session
 		clientSessionManager.start();
@@ -345,30 +345,36 @@ public class RuneLite
 		SplashScreen.stage(.75, null, "Starting core interface");
 
 		// Initialize UI
-		clientUI.init();
+		// DAN - clientUI.init();
 
 		// Initialize Discord service
-		discordService.init();
+		// DAN - discordService.init();
 
 		// Register event listeners
-		eventBus.register(clientUI);
-		eventBus.register(pluginManager);
-		eventBus.register(externalPluginManager);
-		eventBus.register(overlayManager);
+		// DAN - eventBus.register(clientUI);
+		// DAN - eventBus.register(pluginManager);
+		// DAN - eventBus.register(externalPluginManager);
+		// DAN - eventBus.register(overlayManager);
 		eventBus.register(configManager);
-		eventBus.register(discordService);
+		// DAN - eventBus.register(discordService);
 
 		// Add core overlays
-		WidgetOverlay.createOverlays(overlayManager, client).forEach(overlayManager::add);
-		overlayManager.add(worldMapOverlay.get());
-		overlayManager.add(tooltipOverlay.get());
+		// DAN - WidgetOverlay.createOverlays(overlayManager, client).forEach(overlayManager::add);
+		// DAN - overlayManager.add(worldMapOverlay.get());
+		// DAN - overlayManager.add(tooltipOverlay.get());
 
 		// Start plugins
-		pluginManager.startPlugins();
+		// DAN - pluginManager.startPlugins();
 
 		SplashScreen.stop();
 
-		clientUI.show();
+		// DAN - clientUI.show();
+
+		// DAN - Loads the OG OSRS window instead of RuneLite
+		java.awt.Frame frame = new java.awt.Frame("Rune.NET");
+		frame.add(applet);
+		frame.pack();
+		frame.setVisible(true);
 
 		if (telemetryClient != null)
 		{
